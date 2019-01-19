@@ -17,6 +17,7 @@ export class AppComponent {
   alignForm = document.getElementById("fillData");
   flightData: any;
   flightDataArray: any;
+  loader = false;
 
   constructor(private flightService: FlightDataService) { }
   //service has the data for which I have done a call to Json data using Observables and subscribe (flight-data.service)
@@ -41,9 +42,19 @@ export class AppComponent {
       .style("border-top-width", 0)
 
     d3.select("#colTwo")
-      .style("height", window.innerHeight - 55 + "px"); //height for the right div
+      .style("height", window.innerHeight - 81 + "px"); //height for the right div
+
+    // d3.select("#fillData")
+    // .style("height", window.innerHeight - 81 + "px");
+    // d3.select("#image")
+    // .style("height", window.innerHeight - 81 + "px");
+    let divHeight = (window.innerHeight - 81) + "px";
   }
 
+  onResize(event) {
+    console.log(event.target.innerHeight);
+    event.target.innerHeight;
+  }
   //conversion of date 
   convertDate(date) {
     let formatInputDate = new Date(date);
@@ -57,6 +68,7 @@ export class AppComponent {
   numOfPassengers = ['Please Select the number', '1', '2', '3', '4', '5']; //dropdown for numOfPassengers
 
   //onClick of Search Button
+  // setTimeout(flightSearch(),3000);
   flightSearch(origin, destination, numOfPsg, date) {
     this.displayData = false;
     this.flightDataArray = [];
@@ -79,6 +91,7 @@ export class AppComponent {
       if (origin === '' || destination === '' || numOfPsg === this.numOfPassengers[0] || date === '') {
         alert("Please Fill All the Fields");
       } else {
+
         let flightData = this.data;
         var convertInputDate = new Date(date);
         let addOneDay = convertInputDate.setDate(convertInputDate.getDate() + 1);//since new Date() considers the first month as 0
@@ -91,12 +104,13 @@ export class AppComponent {
           let checkBoolean = newDate.localeCompare(inputedDate);
           if (flightData[i].origin === origin && flightData[i].destination === destination && checkBoolean === 0) {
             this.displayData = true;
+            this.loader = true;
             if (numOfPsg < flightData[i].availableSeats) {
               this.flightDataArray.push(flightData[i]);
             }
-
           }
         }
+        this.loader = false;
         if (this.displayData === false) {
           alert("No Flights found for the above data");
         }

@@ -10,6 +10,7 @@ export class FlightDataService {
   data = flightDetails;
   constructor() { }
   //call for data using observables
+ 
   getFlightData(): Observable<flightDetailsFormat[]> {
     return of(this.data);
   }
