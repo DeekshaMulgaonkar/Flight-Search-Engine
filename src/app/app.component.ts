@@ -26,7 +26,6 @@ export class AppComponent {
     this.data = this.getFlightDataService();
   }
 
-
   getFlightDataService(): void { //call for service
     this.flightService.getFlightData()
       .subscribe(flightData => this.flightData = flightData);
@@ -59,20 +58,21 @@ export class AppComponent {
   originOptions = ['Please Select Origin City', 'Pune', 'Delhi', 'Goa', 'Bangalore']; //dropdown for city
   destinationOptions = ['Please Select Destination City', 'Pune', 'Delhi', 'Goa', 'Bangalore'];
   numOfPassengers = ['Please Select the number', '1', '2', '3', '4', '5']; //dropdown for numOfPassengers
-  
-   sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-  }
 
-  flightSearch(origin, destination, numOfPsg, date){
+
+  //for delay of Execution
+  //  sleep(milliseconds) {
+  //   var start = new Date().getTime();
+  //   for (var i = 0; i < 1e7; i++) {
+  //     if ((new Date().getTime() - start) > milliseconds){
+  //       break;
+  //     }
+  //   }
+  // }
+
+  flightSearch(origin, destination, numOfPsg, date) {
     this.displayData = false;
     this.flightDataArray = [];
-
     //validations for origin and destination dropdown
     if (origin === this.originOptions[0] || destination === this.destinationOptions[0]) {
       if (origin === this.originOptions[0]) {
@@ -91,7 +91,7 @@ export class AppComponent {
       if (origin === '' || destination === '' || numOfPsg === this.numOfPassengers[0] || date === '') {
         alert("Please Fill All the Fields");
       } else {
-        
+
         let flightData = this.data;
         var convertInputDate = new Date(date);
         let addOneDay = convertInputDate.setDate(convertInputDate.getDate() + 1);//since new Date() considers the first month as 0

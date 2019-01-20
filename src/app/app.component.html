@@ -91,72 +91,72 @@
         </div>
       </div>
       <div *ngIf="displayData">
-        <div *ngIf="loader">
+        <!-- If loader -->
+        <!-- <div *ngIf="loader">
           <img src="assets/loader.gif" alt="Loading..." />
-        </div>
-        <div *ngIf="!loader">
-          <div class="row">
-            <div class="col-sm-6 col-md-6">
-              <b>{{origin.value}} > {{destination.value}}</b>
-            </div>
-            <div class="col-sm-6 col-md-6 buttonAlign">
-              Depart:{{date.value}}
-            </div>
+        </div> -->
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <b>{{origin.value}} > {{destination.value}}</b>
           </div>
-          <hr>
-          <div id="fDetails" *ngFor="let data of flightDataArray">
-            <div id="stylingForParentDiv">
-              <div class=row>
-                <div id="divForPrice">
-                  Rs.
-                  {{data.price}}.00
-                </div>
-                <span id="divForFlightName">
-                  Airline :
-                  <span id="textColor">
-                    {{data.airline}}
-                  </span>
+          <div class="col-sm-6 col-md-6 buttonAlign">
+            Depart:{{date.value}}
+          </div>
+        </div>
+        <hr>
+        <div id="fDetails" *ngFor="let data of flightDataArray">
+          <div id="stylingForParentDiv">
+            <div class=row>
+              <div id="divForPrice">
+                Rs.
+                {{data.price}}.00
+              </div>
+              <span id="divForFlightName">
+                Airline :
+                <span id="textColor">
+                  {{data.airline}}
                 </span>
+              </span>
+              <div>
+                <img class="titleIcon" src="assets/flight.png">
+              </div>
+            </div>
+            <div class=row>
+              <div class="col-4">
                 <div>
-                  <img class="titleIcon" src="assets/flight.png">
+                  {{data.airlineCode}}
+                </div>
+                <div>
+                  {{data.origin}} > {{data.destination}}
+                </div>
+                <div class="textFont">
+                  Depart: {{(data.departure).substring(0,10)}}/{{(data.departure).substring(11,19)}}
+                </div>
+                <div class="textFont">
+                  Arrive: {{(data.arrival).substring(0,10)}}/{{(data.arrival).substring(11,19)}}
                 </div>
               </div>
-              <div class=row>
-                <div class="col-4">
-                  <div>
-                    {{data.airlineCode}}
-                  </div>
-                  <div>
-                    {{data.origin}} > {{data.destination}}
-                  </div>
-                  <div class="textFont">
-                    Depart: {{(data.departure).substring(0,10)}}/{{(data.departure).substring(11,19)}}
-                  </div>
-                  <div class="textFont">
-                    Arrive: {{(data.arrival).substring(0,10)}}/{{(data.arrival).substring(11,19)}}
-                  </div>
+              <div class="col-4">
+                <div>
+                  {{data.airlineCode}}
                 </div>
-                <div class="col-4">
-                  <div>
-                    {{data.airlineCode}}
-                  </div>
-                  <div>
-                    {{data.destination}} > {{data.origin}}
-                  </div>
-                  <div class="textFont">
-                    Duration : {{data.duration}}
-                  </div>
-                  <div class="textFont">
-                    Available Seats: {{data.availableSeats}}
-                  </div>
+                <div>
+                  {{data.destination}} > {{data.origin}}
                 </div>
-                <div class="col-4">
-                  <button type="button" class="btn btn-success bookingButton" style="padding:2%">Book The Flight</button>
+                <div class="textFont">
+                  Duration : {{data.duration}}
                 </div>
+                <div class="textFont">
+                  Available Seats: {{data.availableSeats}}
+                </div>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-success bookingButton" style="padding:2%">Book The Flight</button>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
