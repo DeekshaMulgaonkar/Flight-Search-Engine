@@ -93,12 +93,8 @@
     margin-left:14%;
 }
 .bookingButton{
-    /* float: right;
-    margin-top:-7%; */
     background: #ff0000;
-    /* width: 25%; */
     border:0px;
-    /* height: 36px; */
 }
 
 .bookingButton :hover{
@@ -137,8 +133,6 @@ input[type=text], select, textarea {
   }
   
   .container {
-    /* margin-left:13%; 
-    margin-top:13% */
     padding: 14%;
   }
   
@@ -166,29 +160,29 @@ input[type=text], select, textarea {
     }
   }
 
-
-
-
-
+.noData{
+    padding:5%; 
+    height: 100%
+}
 
   /* entire container, keeps perspective */
-.flip-container {
-	perspective: 1000px;
+.turn-container {
+    perspective: 1000px;
+    display: inline-block; 
+    margin:15px;
 }
 	/* flip the pane when hovered */
-	.flip-container:hover .flipper, .flip-container.hover .flipper {
-		transform: rotateY(180deg);
-	}
+.turn-container:hover .imageTurn, .turn-container.hover .imageTurn {
+    transform: rotateY(180deg);
+}
 
-.flip-container, .front, .back {
+.turn-container, .front, .back {
 	width: 200px;
      height: 200px;
-   /* margin-left: 20px; */
-    /* border: 1px solid black; */
 }
 
 /* flip speed goes here */
-.flipper {
+.imageTurn {
 	transition: 0.6s;
 	transform-style: preserve-3d;
 
@@ -198,7 +192,6 @@ input[type=text], select, textarea {
 /* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
-
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -216,70 +209,71 @@ input[type=text], select, textarea {
 	transform: rotateY(180deg);
 }
 
-
-
-
-.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+.turn-container:hover .imageTurn, .turn-container.hover .imageTurn, .turn-container.flip .imageTurn {
 	transform: rotateY(180deg);
 }
 
-
-.vertical.flip-container {
+.vertical.turn-container {
 	position: relative;
 }
 
-	.vertical .back {
-		transform: rotateX(180deg);
-	}
+.vertical .back {
+    transform: rotateX(180deg);
+}
 
-	.vertical.flip-container .flipper {
-		transform-origin: 100% 213.5px; /* half of height */
-	}
+.vertical.turn-container .imageTurn {
+    transform-origin: 100% 213.5px; /* half of height */
+}
 
-	.vertical.flip-container:hover .flipper {
-		transform: rotateX(-180deg);
-    }
-    
-    
-    .item-1, 
-    .item-2, 
-    .item-3 {
-        position: absolute;
-        display: block;
-        top: 2em;
-        width: 60%;
-        font-size: 2em;
-        animation-duration: 20s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-    }
-    
-    .item-1{
-        animation-name: anim-1;
-    }
-    
-    .item-2{
-        animation-name: anim-2;
-    }
-    
-    .item-3{
-        animation-name: anim-3;
-    }
-    
-    @keyframes anim-1 {
-        0%, 8.3% { left: -100%; opacity: 0; }
-      8.3%,25% { left: 25%; opacity: 1; }
-      33.33%, 100% { left: 110%; opacity: 0; }
-    }
-    
-    @keyframes anim-2 {
-        0%, 33.33% { left: -100%; opacity: 0; }
-      41.63%, 58.29% { left: 25%; opacity: 1; }
-      66.66%, 100% { left: 110%; opacity: 0; }
-    }
-    
-    @keyframes anim-3 {
-        0%, 66.66% { left: -100%; opacity: 0; }
-      74.96%, 91.62% { left: 25%; opacity: 1; }
-      100% { left: 110%; opacity: 0; }
-    }
+.vertical.turn-container:hover .imageTurn {
+    transform: rotateX(-180deg);
+}
+
+.flipImage{
+    width:200px;
+    height:200px;
+}
+
+.item-1, 
+.item-2, 
+.item-3 {
+    position: absolute;
+    display: block;
+    top: 2em;
+    font-size: 2em;
+    animation-duration: 20s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    width:400px; 
+    height:200px
+}
+
+.item-1{
+    animation-name: anim-1;
+}
+
+.item-2{
+    animation-name: anim-2;
+}
+
+.item-3{
+    animation-name: anim-3;
+}
+
+@keyframes anim-1 {
+    0%, 8.3% { left: -100%; opacity: 0; }
+    8.3%,25% { left: 25%; opacity: 1; }
+    33.33%, 100% { left: 110%; opacity: 0; }
+}
+
+@keyframes anim-2 {
+    0%, 33.33% { left: -100%; opacity: 0; }
+    41.63%, 58.29% { left: 25%; opacity: 1; }
+    66.66%, 100% { left: 110%; opacity: 0; }
+}
+
+@keyframes anim-3 {
+    0%, 66.66% { left: -100%; opacity: 0; }
+    74.96%, 91.62% { left: 25%; opacity: 1; }
+    100% { left: 110%; opacity: 0; }
+}

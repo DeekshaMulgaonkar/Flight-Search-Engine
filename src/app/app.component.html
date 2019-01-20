@@ -39,48 +39,42 @@
             </mat-form-field>
           </div>
         </div>
-        <!-- </div> -->
-        <!-- <div class="col-75 buttonAlign"> -->
         <div class="row">
           <button id="searchButton" (click)="flightSearch(origin.value, destination.value, psg.value, date.value)">Search</button>
         </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-8" id="colTwo">
-      <div *ngIf="!displayData" style="background-image:url('assets/imageFlight.jpg');padding:5%; height: 100%">
-        <!-- <div *ngIf="!displayData" style="background: #d6a18f; height:600px" id="image" > -->
-        <!-- <img id="noDataDisplay" src="assets/imageFlight.jpg" style="position: absolute"> -->
-        <!-- <div style="border:1px solid black; z-index: 1; width:40px; height:40px">
-        </div> -->
+      <div *ngIf="!displayData" class="noData">
         <div class="row">
           <div class="container" style="padding: 0px">
-            <div class="flip-container " ontouchstart="this.classList.toggle('hover');" style="display: inline-block; margin:15px">
-              <div class="flipper">
+            <div class="turn-container " ontouchstart="this.classList.toggle('hover');">
+              <div class="imageTurn">
                 <div class="front">
-                  <img src="assets/flightDiscount5.jpg" style="width:200px;height:200px">
+                  <img src="assets/flightDiscount5.jpg" class="flipImage">
                 </div>
                 <div class="back">
-                  <img src="assets/flightDiscount4.jpg" style="width:200px;height:200px">
+                  <img src="assets/flightDiscount4.jpg" class="flipImage">
                 </div>
               </div>
             </div>
-            <div class="flip-container " ontouchstart="this.classList.toggle('hover');" style="display: inline-block; margin:15px">
-              <div class="flipper ">
+            <div class="turn-container " ontouchstart="this.classList.toggle('hover');">
+              <div class="imageTurn ">
                 <div class="front">
-                  <img src="assets/flightDiscount1.jpg" style="width:200px;height:200px">
+                  <img src="assets/flightDiscount1.jpg" class="flipImage">
                 </div>
                 <div class="back">
-                  <img src="assets/flightDiscount3.jpg" style="width:200px;height:200px">
+                  <img src="assets/flightDiscount3.jpg" class="flipImage">
                 </div>
               </div>
             </div>
-            <div class="flip-container " ontouchstart="this.classList.toggle('hover');" style="display: inline-block; margin:15px">
-              <div class="flipper ">
+            <div class="turn-container " ontouchstart="this.classList.toggle('hover');">
+              <div class="imageTurn ">
                 <div class="front">
-                  <img src="assets/flightDiscount7.jpg" style="width:200px;height:200px">
+                  <img src="assets/flightDiscount7.jpg" class="flipImage">
                 </div>
                 <div class="back">
-                  <img src="assets/flightDiscount6.jpg" style="width:200px;height:200px">
+                  <img src="assets/flightDiscount6.jpg" class="flipImage">
                 </div>
               </div>
             </div>
@@ -88,21 +82,19 @@
         </div>
         <div class="row">
           <div class="container" style="padding:0px">
-
             <div class="col-sm-12 col-md-12">
-              <img class="item-1" src="assets/flightDiscount1.jpg" style="width:400px; height:200px"/>
-              <img class="item-2" src="assets/flightDiscount2.jpg" style="width:400px; height:200px"/>
-              <img class="item-3" src="assets/flightDiscount3.jpg" style="width:400px; height:200px"/>
+              <img class="item-1" src="assets/flightDiscount1.jpg" />
+              <img class="item-2" src="assets/flightDiscount2.jpg" />
+              <img class="item-3" src="assets/flightDiscount3.jpg" />
             </div>
           </div>
         </div>
       </div>
       <div *ngIf="displayData">
-        <div *ngIf="loader && !flightDataArray">
+        <div *ngIf="loader">
           <img src="assets/loader.gif" alt="Loading..." />
         </div>
-        <div *ngIf="!loader && flightDataArray">
-
+        <div *ngIf="!loader">
           <div class="row">
             <div class="col-sm-6 col-md-6">
               <b>{{origin.value}} > {{destination.value}}</b>
@@ -162,13 +154,9 @@
                   <button type="button" class="btn btn-success bookingButton" style="padding:2%">Book The Flight</button>
                 </div>
               </div>
-              <!-- <div>
-                    <button type="button" class="btn btn-success bookingButton">Book The Flight</button>
-                  </div> -->
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

@@ -26,8 +26,8 @@ export class AppComponent {
     this.data = this.getFlightDataService();
   }
 
-  getFlightDataService(): void {
-    //call for service
+
+  getFlightDataService(): void { //call for service
     this.flightService.getFlightData()
       .subscribe(flightData => this.flightData = flightData);
     return this.flightData;
@@ -43,16 +43,9 @@ export class AppComponent {
 
     d3.select("#colTwo")
       .style("height", window.innerHeight - 81 + "px"); //height for the right div
-
-    // d3.select("#fillData")
-    // .style("height", window.innerHeight - 81 + "px");
-    // d3.select("#image")
-    // .style("height", window.innerHeight - 81 + "px");
-    let divHeight = (window.innerHeight - 81) + "px";
   }
 
   onResize(event) {
-    console.log(event.target.innerHeight);
     event.target.innerHeight;
   }
   //conversion of date 
@@ -66,10 +59,17 @@ export class AppComponent {
   originOptions = ['Please Select Origin City', 'Pune', 'Delhi', 'Goa', 'Bangalore']; //dropdown for city
   destinationOptions = ['Please Select Destination City', 'Pune', 'Delhi', 'Goa', 'Bangalore'];
   numOfPassengers = ['Please Select the number', '1', '2', '3', '4', '5']; //dropdown for numOfPassengers
+  
+   sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
 
-  //onClick of Search Button
-  // setTimeout(flightSearch(),3000);
-  flightSearch(origin, destination, numOfPsg, date) {
+  flightSearch(origin, destination, numOfPsg, date){
     this.displayData = false;
     this.flightDataArray = [];
 
@@ -91,7 +91,7 @@ export class AppComponent {
       if (origin === '' || destination === '' || numOfPsg === this.numOfPassengers[0] || date === '') {
         alert("Please Fill All the Fields");
       } else {
-
+        
         let flightData = this.data;
         var convertInputDate = new Date(date);
         let addOneDay = convertInputDate.setDate(convertInputDate.getDate() + 1);//since new Date() considers the first month as 0
@@ -104,13 +104,11 @@ export class AppComponent {
           let checkBoolean = newDate.localeCompare(inputedDate);
           if (flightData[i].origin === origin && flightData[i].destination === destination && checkBoolean === 0) {
             this.displayData = true;
-            this.loader = true;
             if (numOfPsg < flightData[i].availableSeats) {
               this.flightDataArray.push(flightData[i]);
             }
           }
         }
-        this.loader = false;
         if (this.displayData === false) {
           alert("No Flights found for the above data");
         }
